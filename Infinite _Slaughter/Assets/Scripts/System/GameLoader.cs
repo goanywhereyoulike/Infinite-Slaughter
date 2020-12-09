@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameLoader : AsynCloader
 {
     public int sceneIndexToLoad = 1;
+    public List<Component> GameModules;
     public GameObject UIManagerPrefab = null;
     public LoadingScreen loadingScreen = null;
     private static int _sceneIndex = 1;
@@ -104,14 +105,20 @@ public class GameLoader : AsynCloader
     private IEnumerator InitializeModularSystems(Transform systemsParent)
     {
         Debug.Log("Loading modular systems...");
-        yield return null;
+       // yield return null;
 
-        //Fake loadingsteps for the loading bar
-        for (int i = 0; i < _modularLoadTotalSteps; ++i)
+        foreach (Component c in GameModules)
         {
-            _modularLoadCurrentStep += 1.0f;
-            yield return null;
+            if (c is IGameModule)
+            {
+                IGameModule module = (IGameModule)c;
+                yield return module.LoadModule();
+            }
+
+
+
         }
+        yield return null;
     }
 
     private void OnComplete()

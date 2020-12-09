@@ -29,6 +29,7 @@ public class GamePlayhud : MonoBehaviour
     private Button Quitbutton = null;
 
 
+
     bool GamePause = false;
     public void Initialize()
     {
@@ -79,8 +80,9 @@ public class GamePlayhud : MonoBehaviour
     }
     public void Resume()
     {
+        //Debug.Log("Hello");
         Panel.gameObject.SetActive(false);
-        Time.timeScale = 1f;
+        Time.timeScale = 1.0f;
         GamePause = false;
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -99,4 +101,5 @@ public class GamePlayhud : MonoBehaviour
         Application.Quit();
 
     }
+
 }
