@@ -8,8 +8,6 @@ public class TurretBase : MonoBehaviour
     GameObject turret;
     [SerializeField]
     Canvas buildUI;
-    [SerializeField]
-    GameObject buildLocation;
     public float range;
     bool isInRange;
     // Start is called before the first frame update
@@ -27,7 +25,7 @@ public class TurretBase : MonoBehaviour
         if (Input.GetKey(KeyCode.E)&&isInRange)
         {
             turret.gameObject.SetActive(true);
-            buildLocation.gameObject.SetActive(false);
+
             Destroy(buildUI.gameObject);
 
         }

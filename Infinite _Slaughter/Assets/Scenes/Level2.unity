@@ -416,6 +416,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: TurretBase
       objectReference: {fileID: 0}
+    - target: {fileID: 6965555206186549497, guid: f8a37af48adde8544b9aeddbd844f2fa,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965555206186549497, guid: f8a37af48adde8544b9aeddbd844f2fa,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 15.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965555206186549497, guid: f8a37af48adde8544b9aeddbd844f2fa,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.3
+      objectReference: {fileID: 0}
     - target: {fileID: 6965555207158729377, guid: f8a37af48adde8544b9aeddbd844f2fa,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -2151,6 +2166,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: TurretBase (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 6965555206186549497, guid: f8a37af48adde8544b9aeddbd844f2fa,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965555206186549497, guid: f8a37af48adde8544b9aeddbd844f2fa,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965555206186549497, guid: f8a37af48adde8544b9aeddbd844f2fa,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -13.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965555206186549497, guid: f8a37af48adde8544b9aeddbd844f2fa,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.82
+      objectReference: {fileID: 0}
     - target: {fileID: 6965555207158729377, guid: f8a37af48adde8544b9aeddbd844f2fa,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -3816,6 +3851,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TurretBase (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965555206186549497, guid: f8a37af48adde8544b9aeddbd844f2fa,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 24.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965555206186549497, guid: f8a37af48adde8544b9aeddbd844f2fa,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965555206186549497, guid: f8a37af48adde8544b9aeddbd844f2fa,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965555206186549497, guid: f8a37af48adde8544b9aeddbd844f2fa,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.88
       objectReference: {fileID: 0}
     - target: {fileID: 6965555207158729377, guid: f8a37af48adde8544b9aeddbd844f2fa,
         type: 3}
@@ -7533,6 +7588,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: TurretBase (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6965555206186549497, guid: f8a37af48adde8544b9aeddbd844f2fa,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965555206186549497, guid: f8a37af48adde8544b9aeddbd844f2fa,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -13.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965555206186549497, guid: f8a37af48adde8544b9aeddbd844f2fa,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965555206186549497, guid: f8a37af48adde8544b9aeddbd844f2fa,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.81
+      objectReference: {fileID: 0}
     - target: {fileID: 6965555207158729377, guid: f8a37af48adde8544b9aeddbd844f2fa,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -7762,6 +7837,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TurretBase (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965555206186549497, guid: f8a37af48adde8544b9aeddbd844f2fa,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965555206186549497, guid: f8a37af48adde8544b9aeddbd844f2fa,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965555206186549497, guid: f8a37af48adde8544b9aeddbd844f2fa,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965555206186549497, guid: f8a37af48adde8544b9aeddbd844f2fa,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.38
       objectReference: {fileID: 0}
     - target: {fileID: 6965555207158729377, guid: f8a37af48adde8544b9aeddbd844f2fa,
         type: 3}
@@ -8353,6 +8448,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: TurretBase (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6965555206186549497, guid: f8a37af48adde8544b9aeddbd844f2fa,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 34.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965555206186549497, guid: f8a37af48adde8544b9aeddbd844f2fa,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -25.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965555206186549497, guid: f8a37af48adde8544b9aeddbd844f2fa,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965555206186549497, guid: f8a37af48adde8544b9aeddbd844f2fa,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.46
+      objectReference: {fileID: 0}
     - target: {fileID: 6965555207158729377, guid: f8a37af48adde8544b9aeddbd844f2fa,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -8528,6 +8643,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TurretBase (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965555206186549497, guid: f8a37af48adde8544b9aeddbd844f2fa,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965555206186549497, guid: f8a37af48adde8544b9aeddbd844f2fa,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -20.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965555206186549497, guid: f8a37af48adde8544b9aeddbd844f2fa,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965555206186549497, guid: f8a37af48adde8544b9aeddbd844f2fa,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.52
       objectReference: {fileID: 0}
     - target: {fileID: 6965555207158729377, guid: f8a37af48adde8544b9aeddbd844f2fa,
         type: 3}
@@ -8989,6 +9124,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TurretBase (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965555206186549497, guid: f8a37af48adde8544b9aeddbd844f2fa,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 24.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965555206186549497, guid: f8a37af48adde8544b9aeddbd844f2fa,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 16.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965555206186549497, guid: f8a37af48adde8544b9aeddbd844f2fa,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965555206186549497, guid: f8a37af48adde8544b9aeddbd844f2fa,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.88
       objectReference: {fileID: 0}
     - target: {fileID: 6965555207158729377, guid: f8a37af48adde8544b9aeddbd844f2fa,
         type: 3}
