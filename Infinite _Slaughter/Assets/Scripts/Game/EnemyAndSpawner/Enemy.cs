@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
     public float maxSpeed = 4.0f;
     public Transform target;
-    public float maxHealth = 100.0f;
+    //public float maxHealth = 100.0f;
+    [SerializeField]
+    private Slider healthBar;
 
     private NavMeshAgent _agent;
     private Animator _animator;
@@ -15,14 +18,18 @@ public class Enemy : MonoBehaviour
     private bool isDead = false;
     private WaypointManager.Path _path;
     //private int _currentWaypoint = 0;
-    private float _currentHealth = 0.0f;
+    //private float _currentHealth = 0.0f;
     public GameObject dropPrefab = null;
-
+    private void Awake()
+    {
+        healthBar.maxValue = this.GetComponent<DestructibleObject>().MaxHealth;
+        healthBar.value = healthBar.maxValue;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        _currentHealth = maxHealth;
+       // _currentHealth = maxHealth;
         _animator = GetComponent<Animator>();
         _agent = GetComponent<NavMeshAgent>();
         
@@ -62,6 +69,7 @@ public class Enemy : MonoBehaviour
 
         if (isDead)
         {
+
             return;
         }
         //move to target
@@ -105,20 +113,20 @@ public class Enemy : MonoBehaviour
         _path = path;
     }
 
-    public float GetHealth()
-    {
-        return _currentHealth;
-    }
+    //public float GetHealth()
+    //{
+    //    return _currentHealth;
+    //}
 
-    public void TakeDamage(float damage)
-    {
-        _currentHealth -= damage;
-        if(_currentHealth <= 0.0f && isDead == false)
-        {
-            isDead = true;
-            StartCoroutine("Kill");
-        }
-    }
+    //public void TakeDamage(float damage)
+    //{
+    //    _currentHealth -= damage;
+    //    if(_currentHealth <= 0.0f && isDead == false)
+    //    {
+    //        isDead = true;
+    //        StartCoroutine("Kill");
+    //    }
+    //}
 
     public IEnumerator Kill()
     {
@@ -131,5 +139,11 @@ public class Enemy : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
         Destroy(gameObject,1f);
+    }
+
+    public void UpdateHealthBar(float health)
+    {
+        healthBar.value = health;
+
     }
 }
