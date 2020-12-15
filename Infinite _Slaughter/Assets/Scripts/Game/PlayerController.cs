@@ -71,6 +71,15 @@ public class PlayerController : MonoBehaviour
 
 
     }
-   
+    private void OnCollisionEnter(Collision collision)
+    {
+        Enemy enmey = collision.gameObject.GetComponent<Enemy>();
+        if (enmey != null)
+        {
+            player.TakeDamage(5);
+            ServiceLocator.Get<GameManager>().UpdateHealthBar(player.CurrentHealth);
+        }
+    }
+
 
 }
