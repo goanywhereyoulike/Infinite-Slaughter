@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
         player = GetComponent<DestructibleObject>();
         ServiceLocator.Get<GameManager>().SetHealthBar(player.MaxHealth);
         ServiceLocator.Get<GameManager>().UpdateHealthBar(player.CurrentHealth);
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
         
     }
     // Update is called once per frame
@@ -71,6 +71,15 @@ public class PlayerController : MonoBehaviour
 
 
     }
-   
+    private void OnCollisionEnter(Collision collision)
+    {
+        Enemy enmey = collision.gameObject.GetComponent<Enemy>();
+        if (enmey != null)
+        {
+            player.TakeDamage(5);
+            ServiceLocator.Get<GameManager>().UpdateHealthBar(player.CurrentHealth);
+        }
+    }
+
 
 }
