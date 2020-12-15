@@ -1269,7 +1269,7 @@ Transform:
   m_GameObject: {fileID: 940779785}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -38.12, y: 4, z: -7.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1.0000001}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -2417,7 +2417,7 @@ MonoBehaviour:
   secondsBetweenWaves: 5
   secondsStartDelay: 5
   pathId: 0
-  destination: {fileID: 1943054694}
+  destination: {fileID: 940779786}
 --- !u!4 &1552689686
 Transform:
   m_ObjectHideFlags: 0
