@@ -10,6 +10,7 @@ public class TurretBase : MonoBehaviour
     Canvas buildUI;
     public float range;
     bool isInRange;
+    bool isBuilt;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +18,7 @@ public class TurretBase : MonoBehaviour
         turret.gameObject.SetActive(false);
         buildUI.gameObject.SetActive(false);
         isInRange = false;
+        isBuilt = false;
     }
 
     // Update is called once per frame
@@ -26,13 +28,13 @@ public class TurretBase : MonoBehaviour
         {
             turret.gameObject.SetActive(true);
 
-            Destroy(buildUI.gameObject);
+            isBuilt = true;
 
         }
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player")&&!isBuilt)
         {
             buildUI.gameObject.SetActive(true);
             isInRange = true;
