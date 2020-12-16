@@ -1928,7 +1928,7 @@ GameObject:
   - component: {fileID: 2034110584647031184}
   m_Layer: 0
   m_Name: robotSphere(Big)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1981,7 +1981,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 3
   target: {fileID: 0}
-  maxHealth: 300
+  healthBar: {fileID: 0}
   dropPrefab: {fileID: 0}
 --- !u!195 &1952368408030427390
 NavMeshAgent:
