@@ -881,6 +881,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1397318442}
   - component: {fileID: 1397318441}
+  - component: {fileID: 1397318443}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -914,6 +915,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1397318443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397318440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbfdee9571497cd40bc8229e7fc86993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Music1: {fileID: 8300000, guid: b48019afce99dbd44acf0b5e6724383b, type: 3}
+  Music2: {fileID: 8300000, guid: b41bc246c277bd545ad830d26b58879a, type: 3}
+  Explode1: {fileID: 8300000, guid: eec5f4e35dc3a484d98792d191ec5b6d, type: 3}
+  Laser1: {fileID: 8300000, guid: 3426bedcf28085f45988854d3ef28833, type: 3}
 --- !u!1 &1855471389
 GameObject:
   m_ObjectHideFlags: 0

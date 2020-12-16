@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     //public float maxHealth = 100.0f;
     [SerializeField]
     private Slider healthBar;
+    private AudioSource _audioSource;
 
     private NavMeshAgent _agent;
     private Animator _animator;
@@ -22,6 +23,7 @@ public class Enemy : MonoBehaviour
     public GameObject dropPrefab = null;
     private void Awake()
     {
+        _audioSource = gameObject.AddComponent<AudioSource>();
         healthBar.maxValue = this.GetComponent<DestructibleObject>().MaxHealth;
         healthBar.value = healthBar.maxValue;
     }
@@ -31,10 +33,9 @@ public class Enemy : MonoBehaviour
     {
        // _currentHealth = maxHealth;
         _animator = GetComponent<Animator>();
-        _agent = gameObject.AddComponent<NavMeshAgent>();
-        //_agent = GetComponent<NavMeshAgent>();
-
-        if (_agent != null)
+        _agent = GetComponent<NavMeshAgent>();
+        
+        if(_agent != null)
         {            
             _agent.SetDestination(target.position);
             _agent.speed = maxSpeed;
@@ -74,12 +75,7 @@ public class Enemy : MonoBehaviour
             return;
         }
         //move to target
-        float dist = 0;
-        if (target != null)
-        {
-            dist = Vector3.Distance(target.position, transform.position);
-        }
-        
+        float dist = Vector3.Distance(target.position, transform.position);
         if (target == null || dist < 2f)
         {
             _animator.SetBool("IsWalking", false);
@@ -106,12 +102,6 @@ public class Enemy : MonoBehaviour
 
         _agent.SetDestination(target.position);
 
-        if (GetComponent<DestructibleObject>().CurrentHealth <= 0)
-        {
-            StartCoroutine("Kill");
-
-        }
-
     }
 
     private void UpdateAnimation()
@@ -125,35 +115,39 @@ public class Enemy : MonoBehaviour
         _path = path;
     }
 
+    //public float GetHealth()
+    //{
+    //    return _currentHealth;
+    //}
+
+    //public void TakeDamage(float damage)
+    //{
+    //    _currentHealth -= damage;
+    //    if(_currentHealth <= 0.0f && isDead == false)
+    //    {
+    //        isDead = true;
+    //        StartCoroutine("Kill");
+    //    }
+    //}
+
     public IEnumerator Kill()
     {
-        //Destroy(_agent);
-        //_agent.isStopped = true;
-        isDead = true;
-        Vector3 pos = transform.position;
-        pos.y += 1;
+        _agent.isStopped = true;
+        AudioManager audio = ServiceLocator.Get<AudioManager>();
+        _audioSource.PlayOneShot(audio.Explode1);
         if(dropPrefab != null)
         {
+            Vector3 pos = transform.position;
+            pos.y += 1;
             GameObject dropItem = Instantiate(dropPrefab, pos, Quaternion.identity);
         }
-        yield return new WaitForSeconds(0.1f);
-        ResetAndRecycle();
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject,1f);
     }
 
     public void UpdateHealthBar(float health)
     {
         healthBar.value = health;
-
-    }
-
-    public void ResetAndRecycle()
-    {
-       // _agent = gameObject.AddComponent<NavMeshAgent>();
-        isDead = false;
-        GetComponent<DestructibleObject>().CurrentHealth = 100;
-        UpdateHealthBar(100);
-        transform.rotation = Quaternion.identity;
-        ServiceLocator.Get<ObjectPoolManager>().RecycleObject(gameObject);
 
     }
 }
