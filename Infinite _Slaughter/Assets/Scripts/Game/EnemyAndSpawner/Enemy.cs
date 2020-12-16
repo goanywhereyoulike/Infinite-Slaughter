@@ -11,7 +11,6 @@ public class Enemy : MonoBehaviour
     //public float maxHealth = 100.0f;
     [SerializeField]
     private Slider healthBar;
-    private AudioSource _audioSource;
 
     private NavMeshAgent _agent;
     private Animator _animator;
@@ -23,7 +22,6 @@ public class Enemy : MonoBehaviour
     public GameObject dropPrefab = null;
     private void Awake()
     {
-        _audioSource = gameObject.AddComponent<AudioSource>();
         healthBar.maxValue = this.GetComponent<DestructibleObject>().MaxHealth;
         healthBar.value = healthBar.maxValue;
     }
@@ -133,12 +131,10 @@ public class Enemy : MonoBehaviour
     public IEnumerator Kill()
     {
         _agent.isStopped = true;
-        AudioManager audio = ServiceLocator.Get<AudioManager>();
-        _audioSource.PlayOneShot(audio.Explode1);
+        Vector3 pos = transform.position;
+        pos.y += 1;
         if(dropPrefab != null)
         {
-            Vector3 pos = transform.position;
-            pos.y += 1;
             GameObject dropItem = Instantiate(dropPrefab, pos, Quaternion.identity);
         }
         yield return new WaitForSeconds(1f);
