@@ -9,8 +9,8 @@ public class GameManager : MonoBehaviour
     {
         {1,4},
         {2,3}
-     
-       
+
+
     };
     private int _topScore = 0;
     private int _numEnemyKilled = 0;
@@ -23,10 +23,10 @@ public class GameManager : MonoBehaviour
 
     public int CurrentCoin { get { return _currentCoin; } }
     private UIManager _uiManager = null;
- 
+
     public GameManager Initialize(int startLevel)
     {
-        _topScore= ServiceLocator.Get<SaveSystem>().LoadBinary<int>("topScore");
+        //_topScore= ServiceLocator.Get<SaveSystem>().LoadBinary<int>("topScore");
         GameLoader.CallOnComplete(OnGameLoaderComplete);
         SetLevel(startLevel);
         return this;
@@ -66,9 +66,9 @@ public class GameManager : MonoBehaviour
         _currentScore += score;
         _numEnemyKilled++;
         _uiManager.UpdateScoreDisplay(_currentScore);
-       if(_currentScore>=_topScore)
+        if (_currentScore >= _topScore)
         {
-            ServiceLocator.Get<SaveSystem>().SaveBinary<int>(_currentScore,"topScore");
+            //ServiceLocator.Get<SaveSystem>().SaveBinary<int>(_currentScore, "topScore");
         }
         CheckWinCondition();
     }
@@ -116,5 +116,5 @@ public class GameManager : MonoBehaviour
         _uiManager.Pause();
     }
 
-   
+
 }
