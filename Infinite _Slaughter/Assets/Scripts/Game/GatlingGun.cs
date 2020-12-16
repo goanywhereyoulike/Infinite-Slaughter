@@ -115,6 +115,10 @@ public class GatlingGun : MonoBehaviour
                     target.TakeDamage(damage);
                     Enemy.UpdateHealthBar(enemy.CurrentHealth);
                 }
+                if (enemy != null && enemy.CurrentHealth == 0)
+                { 
+                    ServiceLocator.Get<GameManager>().UpdateScore(10);
+                }
             }
         }
         else
