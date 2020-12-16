@@ -20478,3 +20478,4 @@ MonoBehaviour:
   barrelRotationSpeed: 1000
   firingRange: 10
   muzzelFlash: {fileID: 198562569527715984}
+  damage: 2

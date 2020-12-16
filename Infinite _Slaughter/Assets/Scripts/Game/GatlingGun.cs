@@ -25,7 +25,7 @@ public class GatlingGun : MonoBehaviour
     // Used to start and stop the turret firing
     bool canFire = false;
 
-    
+    public float damage;
     void Start()
     {
         // Set the firing range distance
@@ -85,6 +85,22 @@ public class GatlingGun : MonoBehaviour
             if (!muzzelFlash.isPlaying)
             {
                 muzzelFlash.Play();
+            }
+            //go_target.GetComponentInParent<IDamageable>().TakeDamage(damage);
+            //go_target.GetComponentInParent<Enemy>().UpdateHealthBar(go_target.transform.GetComponentInParent<DestructibleObject>().CurrentHealth);
+            RaycastHit hit;
+            if (Physics.Raycast(go_barrel.transform.position, go_target.position, out hit, firingRange))
+            {
+                Debug.Log("turret:"+hit.transform.name);
+                IDamageable target = hit.transform.GetComponentInParent<IDamageable>();
+                DestructibleObject enemy = hit.transform.GetComponentInParent<DestructibleObject>();
+                Enemy Enemy = hit.transform.GetComponentInParent<Enemy>();
+                // Rigidbody rb= hit.transform.GetComponentInParent<Rigidbody>();
+                if (target != null && Enemy != null)
+                {
+                    target.TakeDamage(damage);
+                    Enemy.UpdateHealthBar(enemy.CurrentHealth);
+                }
             }
         }
         else
