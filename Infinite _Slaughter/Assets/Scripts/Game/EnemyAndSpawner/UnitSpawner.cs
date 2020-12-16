@@ -10,7 +10,7 @@ public class UnitSpawner : MonoBehaviour
     public int secondsBetweenWaves;
     public int secondsStartDelay;
     public int pathId;
-    public Transform destination;
+   // public Transform destination;
 
     private int _currentWave = 0;
 
@@ -43,10 +43,17 @@ public class UnitSpawner : MonoBehaviour
 
     private IEnumerator SpawnWave(int waveNumber)
     {
+        ObjectPoolManager poolManager = ServiceLocator.Get<ObjectPoolManager>();
         for(int i = 0; i < enemiesPerWave; ++i)
         {
-            GameObject unitGO = Instantiate(UnitPrefab, transform.position, Quaternion.LookRotation(destination.position));
-            unitGO.GetComponent<Enemy>().target = destination;
+            //GameObject unitGO = Instantiate(UnitPrefab, transform.position, Quaternion.LookRotation(destination.position));
+            GameObject enemy = poolManager.GetObjectFromPool("Enemy");
+            enemy.SetActive(true);
+            enemy.transform.position = transform.position;
+            enemy.transform.rotation = transform.rotation;
+            //enemy.GetComponent<Enemy>().target = destination;
+            
+            enemy.GetComponent<Enemy>().Initialize(_path);
             yield return new WaitForSeconds(1f);
         }
     }

@@ -91,9 +91,14 @@ public class Gun : MonoBehaviour
             {
                 
                 ServiceLocator.Get<GameManager>().UpdateScore(10);
-                Instantiate(muzzleExplosion, hit.point, Quaternion.LookRotation(hit.normal));
+                ObjectPoolManager poolManager = ServiceLocator.Get<ObjectPoolManager>();
+                GameObject explosion = poolManager.GetObjectFromPool("ExplosionVEF");
+                explosion.SetActive(true);
+                explosion.transform.position = hit.point;
+                explosion.transform.rotation = Quaternion.LookRotation(hit.normal);
+                //Instantiate(muzzleExplosion, hit.point, Quaternion.LookRotation(hit.normal));
                 Invoke("DestroyLaser", 0.1f);
-
+                StartCoroutine("Kill","explosion");
 
             }
 
@@ -113,4 +118,15 @@ public class Gun : MonoBehaviour
         }
     }
 
+    public IEnumerator Kill(GameObject  obj)
+    {
+        yield return new WaitForSeconds(1f);
+        ResetAndRecycle(obj);
+    }
+    public void ResetAndRecycle(GameObject obj)
+    {
+        transform.rotation = Quaternion.identity;
+        ServiceLocator.Get<ObjectPoolManager>().RecycleObject(obj);
+
+    }
 }
