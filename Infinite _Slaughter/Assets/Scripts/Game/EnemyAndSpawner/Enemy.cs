@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour
     {
        // _currentHealth = maxHealth;
         _animator = GetComponent<Animator>();
-        _agent = GetComponent<NavMeshAgent>();
+        _agent = gameObject.AddComponent<NavMeshAgent>();
         
         if(_agent != null)
         {            
@@ -101,6 +101,11 @@ public class Enemy : MonoBehaviour
         }*/
 
         _agent.SetDestination(target.position);
+        if (GetComponent<DestructibleObject>().CurrentHealth <= 0)
+        {
+            isDead = true;
+            StartCoroutine("Kill");
+        }
 
     }
 
@@ -141,13 +146,22 @@ public class Enemy : MonoBehaviour
             pos.y += 1;
             GameObject dropItem = Instantiate(dropPrefab, pos, Quaternion.identity);
         }
-        yield return new WaitForSeconds(1f);
-        Destroy(gameObject,1f);
+        yield return new WaitForSeconds(0.1f);
+        ResetAndRecycle();
     }
 
     public void UpdateHealthBar(float health)
     {
         healthBar.value = health;
+
+    }
+    public void ResetAndRecycle()
+    {
+       
+        isDead = false;
+      
+        transform.rotation = Quaternion.identity;
+        ServiceLocator.Get<ObjectPoolManager>().RecycleObject(gameObject);
 
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class UnitSpawner : MonoBehaviour
 {
@@ -34,7 +35,7 @@ public class UnitSpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(secondsStartDelay);
 
-        while(_currentWave < numberOfWaves)
+        while (_currentWave < numberOfWaves)
         {
             yield return SpawnWave(_currentWave++);
             yield return new WaitForSeconds(secondsBetweenWaves);
@@ -43,9 +44,24 @@ public class UnitSpawner : MonoBehaviour
 
     private IEnumerator SpawnWave(int waveNumber)
     {
-        for(int i = 0; i < enemiesPerWave; ++i)
+        ObjectPoolManager poolManager = ServiceLocator.Get<ObjectPoolManager>();
+
+        for (int i = 0; i < enemiesPerWave; ++i)
         {
-            GameObject unitGO = Instantiate(UnitPrefab, transform.position, Quaternion.LookRotation(destination.position));
+            GameObject unitGO = poolManager.GetObjectFromPool("Enemies");
+            unitGO.SetActive(true);
+            unitGO.transform.position = this.gameObject.transform.position;
+            unitGO.transform.rotation = transform.rotation;
+
+            //var Transfrom = FindObjectOfType<SpawnTransform>();
+            //if (transform != null)
+            //{
+            //    unitGO.transform.position = Transfrom.gameObject.transform.position;
+            //}
+            unitGO.GetComponent<DestructibleObject>().CurrentHealth = 100;
+            unitGO.GetComponent<Enemy>().UpdateHealthBar(100);
+            //Instantiate(UnitPrefab, transform.position, Quaternion.LookRotation(destination.position));
+            //unitGO.GetComponent<Enemy>().gameObject.AddComponent<NavMeshAgent>();
             unitGO.GetComponent<Enemy>().target = destination;
             yield return new WaitForSeconds(1f);
         }
