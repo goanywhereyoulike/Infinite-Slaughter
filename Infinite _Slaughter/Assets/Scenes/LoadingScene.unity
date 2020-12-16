@@ -226,7 +226,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneIndexToLoad: 1
-  GameModules: []
+  GameModules:
+  - {fileID: 184293469}
   UIManagerPrefab: {fileID: 6952500347550214996, guid: 1142e4b73dc1bdc448bb06c86ede50f5,
     type: 3}
   loadingScreen: {fileID: 269907449}
@@ -256,7 +257,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16eaa7b01a5ef344ebaf3fbff49947d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectsToPool: []
+  objectsToPool:
+  - name: Enemies
+    prefab: {fileID: 1528915638184230, guid: 8e0f285c21cdcf14e8d5c06c57ba936b, type: 3}
+    poolSize: 20
 --- !u!1 &255571075
 GameObject:
   m_ObjectHideFlags: 0

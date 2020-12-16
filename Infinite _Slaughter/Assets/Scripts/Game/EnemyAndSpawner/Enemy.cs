@@ -31,9 +31,10 @@ public class Enemy : MonoBehaviour
     {
        // _currentHealth = maxHealth;
         _animator = GetComponent<Animator>();
-        _agent = GetComponent<NavMeshAgent>();
-        
-        if(_agent != null)
+        _agent = gameObject.AddComponent<NavMeshAgent>();
+        //_agent = GetComponent<NavMeshAgent>();
+
+        if (_agent != null)
         {            
             _agent.SetDestination(target.position);
             _agent.speed = maxSpeed;
@@ -73,7 +74,12 @@ public class Enemy : MonoBehaviour
             return;
         }
         //move to target
-        float dist = Vector3.Distance(target.position, transform.position);
+        float dist = 0;
+        if (target != null)
+        {
+            dist = Vector3.Distance(target.position, transform.position);
+        }
+        
         if (target == null || dist < 2f)
         {
             _animator.SetBool("IsWalking", false);
@@ -100,6 +106,12 @@ public class Enemy : MonoBehaviour
 
         _agent.SetDestination(target.position);
 
+        if (GetComponent<DestructibleObject>().CurrentHealth <= 0)
+        {
+            StartCoroutine("Kill");
+
+        }
+
     }
 
     private void UpdateAnimation()
@@ -113,37 +125,35 @@ public class Enemy : MonoBehaviour
         _path = path;
     }
 
-    //public float GetHealth()
-    //{
-    //    return _currentHealth;
-    //}
-
-    //public void TakeDamage(float damage)
-    //{
-    //    _currentHealth -= damage;
-    //    if(_currentHealth <= 0.0f && isDead == false)
-    //    {
-    //        isDead = true;
-    //        StartCoroutine("Kill");
-    //    }
-    //}
-
     public IEnumerator Kill()
     {
-        _agent.isStopped = true;
+        //Destroy(_agent);
+        //_agent.isStopped = true;
+        isDead = true;
         Vector3 pos = transform.position;
         pos.y += 1;
         if(dropPrefab != null)
         {
             GameObject dropItem = Instantiate(dropPrefab, pos, Quaternion.identity);
         }
-        yield return new WaitForSeconds(1f);
-        Destroy(gameObject,1f);
+        yield return new WaitForSeconds(0.1f);
+        ResetAndRecycle();
     }
 
     public void UpdateHealthBar(float health)
     {
         healthBar.value = health;
+
+    }
+
+    public void ResetAndRecycle()
+    {
+       // _agent = gameObject.AddComponent<NavMeshAgent>();
+        isDead = false;
+        GetComponent<DestructibleObject>().CurrentHealth = 100;
+        UpdateHealthBar(100);
+        transform.rotation = Quaternion.identity;
+        ServiceLocator.Get<ObjectPoolManager>().RecycleObject(gameObject);
 
     }
 }
