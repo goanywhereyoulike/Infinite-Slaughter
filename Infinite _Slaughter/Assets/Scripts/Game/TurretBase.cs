@@ -9,6 +9,8 @@ public class TurretBase : MonoBehaviour
     [SerializeField]
     Canvas buildUI;
     public float range;
+    [SerializeField]
+    float cost;
     bool isInRange;
     bool isBuilt;
     // Start is called before the first frame update
