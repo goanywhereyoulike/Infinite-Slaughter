@@ -75,7 +75,12 @@ public class Enemy : MonoBehaviour
             return;
         }
         //move to target
-        float dist = Vector3.Distance(target.position, transform.position);
+        float dist = 0;
+        if (target != null)
+        {
+            dist = Vector3.Distance(target.position, transform.position);
+        }
+        
         if (target == null || dist < 2f)
         {
             _animator.SetBool("IsWalking", false);
