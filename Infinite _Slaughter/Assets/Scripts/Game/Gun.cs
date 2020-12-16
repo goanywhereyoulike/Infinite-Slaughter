@@ -15,7 +15,6 @@ public class Gun : MonoBehaviour
     public float range = 100.0f;
     //public float ImpactForce = 1000.0f;
     public Camera fpsCamera;
-    private AudioSource _audioSource;
 
     private LineRenderer laser;
     public VisualEffect muzzleFlash;
@@ -25,7 +24,6 @@ public class Gun : MonoBehaviour
 
     private void Start()
     {
-        _audioSource = gameObject.AddComponent<AudioSource>();
         muzzleFlash.Stop();
 
         dividedFireRate = 1 / firerate;
@@ -42,8 +40,6 @@ public class Gun : MonoBehaviour
         if (Input.GetButton("Fire1") && Time.time > nextTimeToFire)
         {
 
-            AudioManager audio = ServiceLocator.Get<AudioManager>();
-            _audioSource.PlayOneShot(audio.Laser1);
             nextTimeToFire = Time.time + dividedFireRate;
             muzzleFlash.Play();
             PlayerShoot();
