@@ -6,11 +6,12 @@ public class GatlingGun : MonoBehaviour
 {
     // target the gun will aim at
     Transform go_target;
-
     // Gameobjects need to control rotation and aiming
     public Transform go_baseRotation;
     public Transform go_GunBody;
     public Transform go_barrel;
+    public Transform muzzle;
+
 
     // Gun barrel rotation
     public float barrelRotationSpeed;
@@ -25,16 +26,27 @@ public class GatlingGun : MonoBehaviour
     // Used to start and stop the turret firing
     bool canFire = false;
 
+    private float nextTimeToFire = 0.5f;
+    public float firerate = 10.0f;
+    private float dividedFireRate = 0.0f;
+
     public float damage;
     void Start()
     {
         // Set the firing range distance
         this.GetComponent<SphereCollider>().radius = firingRange;
+        dividedFireRate = 1 / firerate;
+    
     }
 
     void Update()
     {
-        AimAndFire();
+        if (Time.time > nextTimeToFire)
+        {
+            nextTimeToFire = Time.time + dividedFireRate;
+            AimAndFire();
+        }
+
     }
 
     void OnDrawGizmosSelected()
@@ -89,9 +101,11 @@ public class GatlingGun : MonoBehaviour
             //go_target.GetComponentInParent<IDamageable>().TakeDamage(damage);
             //go_target.GetComponentInParent<Enemy>().UpdateHealthBar(go_target.transform.GetComponentInParent<DestructibleObject>().CurrentHealth);
             RaycastHit hit;
-            if (Physics.Raycast(go_barrel.transform.position, go_target.position, out hit, firingRange))
+            if (Physics.Raycast(go_barrel.transform.position, go_barrel.transform.forward, out hit, firingRange))
             {
-                Debug.Log("turret:"+hit.transform.name);
+                Debug.Log(hit.transform.name);
+
+
                 IDamageable target = hit.transform.GetComponentInParent<IDamageable>();
                 DestructibleObject enemy = hit.transform.GetComponentInParent<DestructibleObject>();
                 Enemy Enemy = hit.transform.GetComponentInParent<Enemy>();

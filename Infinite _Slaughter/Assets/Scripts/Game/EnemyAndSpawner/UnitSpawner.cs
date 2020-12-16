@@ -50,15 +50,16 @@ public class UnitSpawner : MonoBehaviour
         {
             GameObject unitGO = poolManager.GetObjectFromPool("Enemies");
             unitGO.SetActive(true);
-            unitGO.transform.position = this.transform.position;
+            unitGO.transform.position = this.gameObject.transform.position;
             unitGO.transform.rotation = transform.rotation;
 
-            var Transfrom = FindObjectOfType<SpawnTransform>();
-            if (transform != null)
-            {
-                unitGO.transform.position = Transfrom.gameObject.transform.position;
-            }
+            //var Transfrom = FindObjectOfType<SpawnTransform>();
+            //if (transform != null)
+            //{
+            //    unitGO.transform.position = Transfrom.gameObject.transform.position;
+            //}
             unitGO.GetComponent<DestructibleObject>().CurrentHealth = 100;
+            unitGO.GetComponent<Enemy>().UpdateHealthBar(100);
             //Instantiate(UnitPrefab, transform.position, Quaternion.LookRotation(destination.position));
             //unitGO.GetComponent<Enemy>().gameObject.AddComponent<NavMeshAgent>();
             unitGO.GetComponent<Enemy>().target = destination;
